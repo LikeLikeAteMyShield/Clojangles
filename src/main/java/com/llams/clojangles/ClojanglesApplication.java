@@ -1,7 +1,5 @@
 package com.llams.clojangles;
 
-import clojure.java.api.Clojure;
-import clojure.lang.IFn;
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
 import io.dropwizard.setup.Environment;

@@ -76,3 +76,9 @@
 (defn img [attrs {src :src alt :alt}]
   (element "img" (attributes attrs (attribute "src" src) (attribute "alt" alt))))
 
+(defn a
+  ([attrs href content] (element "a" (attributes attrs (attribute "href" href)) content))
+  ([href content] (element "a" (attribute "href" href) content)))
+
+(defn nav [attrs content]
+  (element "nav" attrs content))

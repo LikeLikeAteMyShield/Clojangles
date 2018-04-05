@@ -110,3 +110,9 @@
   (is (=
         (img (css "style") {:src "img.png" :alt "my-image"})
         "<img class=\"style\" src=\"img.png\" alt=\"my-image\">")))
+
+(deftest can-add-links
+  (is (= (a "/foo" "foo") "<a href=\"/foo\">foo</a>")))
+
+(deftest can-add-nav
+  (is (= (nav (css "nav") "foo") "<nav class=\"nav\">foo</nav>")))
