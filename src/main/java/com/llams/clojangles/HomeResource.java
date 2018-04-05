@@ -8,17 +8,17 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/foo")
+@Path("/home")
 @Produces(MediaType.TEXT_HTML)
-public class FooResource {
+public class HomeResource {
 
     @GET
-    public String getFoo() {
+    public String getHomePage() {
         IFn require = Clojure.var("clojure.core", "require");
-        require.invoke(Clojure.read("com.llams.clojangles.main"));
+        require.invoke(Clojure.read("com.llams.clojangles.home"));
 
-        Object foo = Clojure.var("com.llams.clojangles.main", "foo").invoke();
+        Object homePageView = Clojure.var("com.llams.clojangles.home", "home").invoke();
 
-        return (String)foo;
+        return (String)homePageView;
     }
 }

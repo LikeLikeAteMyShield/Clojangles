@@ -1,4 +1,4 @@
-(ns com.llams.clojangles.main
+(ns com.llams.clojangles.home
   (:require [com.llams.clojangles.html-engine :refer :all])
   (:require [clj-http.client :as client])
   (:require [cheshire.core :refer :all])
@@ -10,7 +10,7 @@
 (defn type-badges [types]
   (apply str (map type-badge types)))
 
-(defn display-pokemon [pokedex-number]
+(defn display-pokemon-card [pokedex-number]
   (let [response (client/get (str "http://pokeapi.co/api/v2/pokemon/" pokedex-number))
         json (get response :body)
         pokemon (parse-string json true)
@@ -19,10 +19,14 @@
          (div (css "card-header")
               (img (css "card-img-top") {:src (get sprites :front_default) :alt "sprite"}))
          (div (css "card-body")
-              (a "bar" (h 5 (capitalize (get pokemon :name))))
+              (div (css "row")
+                   (div (css "col-md-8")
+                        (a "bar" (h 5 (capitalize (get pokemon :name)))))
+                   (div (css "col-md-4")
+                        (h 5 (str "#" (get pokemon :id)))))
               (type-badges (get pokemon :types))))))
 
-(defn foo []
+(defn home []
   (html
     (head
       (stylesheet "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"))
@@ -33,22 +37,22 @@
       (div (css "container")
            (div (css "row" "mt-4")
                 (div (css "col-md-4")
-                     (display-pokemon 1))
+                     (display-pokemon-card 1))
                 (div (css "col-md-4")
-                     (display-pokemon 2))
+                     (display-pokemon-card 2))
                 (div (css "col-md-4")
-                     (display-pokemon 3)))
+                     (display-pokemon-card 3)))
            (div (css "row" "mt-4")
                 (div (css "col-md-4")
-                     (display-pokemon 4))
+                     (display-pokemon-card 4))
                 (div (css "col-md-4")
-                     (display-pokemon 5))
+                     (display-pokemon-card 5))
                 (div (css "col-md-4")
-                     (display-pokemon 6)))
+                     (display-pokemon-card 6)))
            (div (css "row" "mt-4")
                 (div (css "col-md-4")
-                     (display-pokemon 7))
+                     (display-pokemon-card 7))
                 (div (css "col-md-4")
-                     (display-pokemon 8))
+                     (display-pokemon-card 8))
                 (div (css "col-md-4")
-                     (display-pokemon 9)))))))
+                     (display-pokemon-card 9)))))))
