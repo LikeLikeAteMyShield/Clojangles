@@ -21,7 +21,7 @@
          (div (css "card-body")
               (div (css "row")
                    (div (css "col-md-8")
-                        (a "bar" (h 5 (capitalize (get pokemon :name)))))
+                        (a (str "pokemon/" (get pokemon :id)) (h 5 (capitalize (get pokemon :name)))))
                    (div (css "col-md-4")
                         (h 5 (str "#" (get pokemon :id)))))
               (type-badges (get pokemon :types))))))
