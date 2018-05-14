@@ -16,6 +16,6 @@ public class ClojanglesApplication extends Application<Configuration> {
 
     public void run(Configuration configuration, Environment environment) {
         environment.jersey().register(new HomeResource());
-        environment.jersey().register(new PokemonResource());
+        environment.jersey().register(new SearchResource());
     }
 }

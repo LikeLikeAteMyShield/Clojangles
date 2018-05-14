@@ -12,13 +12,17 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.TEXT_HTML)
 public class HomeResource {
 
+    private static final String PAGE = "com.llams.clojangles.page";
+    private static final String HOME = "com.llams.clojangles.home";
+
     @GET
     public String getHomePage() {
         IFn require = Clojure.var("clojure.core", "require");
-        require.invoke(Clojure.read("com.llams.clojangles.home"));
+        require.invoke(Clojure.read(PAGE));
+        require.invoke(Clojure.read(HOME));
 
-        Object homePageView = Clojure.var("com.llams.clojangles.home", "home").invoke();
+        String homePageView = (String) Clojure.var(HOME, "home").invoke();
 
-        return (String)homePageView;
+        return (String) Clojure.var(PAGE, "render").invoke(homePageView);
     }
 }
