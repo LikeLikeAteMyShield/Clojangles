@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 public class SearchResource {
 
     private static final String PAGE = "com.llams.clojangles.page";
-    private static final String SEARCH = "com.llams.clojangles.search";
+    private static final String SEARCH = "com.llams.clojangles.search.search";
 
     @GET
     public String search(@QueryParam("term") String term) {
