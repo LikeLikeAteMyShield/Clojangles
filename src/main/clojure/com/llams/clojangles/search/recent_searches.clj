@@ -20,8 +20,10 @@
 
         searches (get-recent-searches f)]
 
-    (div (css "alert" "alert-primary")
-         (span
-           (str "Recent Searches: "
-                (apply str (map #(str (search-link %) ", ") (butlast searches)))
-                (search-link (last searches)))))))
+    (if (> (count searches) 0)
+      (div (css "alert" "alert-primary")
+           (span
+             (str "Recent Searches: "
+                  (apply str (map #(str (search-link %) ", ") (butlast searches)))
+                  (search-link (last searches)))))
+      "")))
